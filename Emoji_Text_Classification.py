@@ -107,24 +107,24 @@ if __name__ == "__main__":
     plt.xlabel('Epoch')
     plt.ylabel('Accuracy')
     plt.title(f"Train accuracy {args.dimension}d-Dropout")
-    plt.savefig(f"assets/accuracy-{args.dimension}-Dropout.png")
+    plt.savefig(f"assents/accuracy-{args.dimension}-Dropout.png")
     plt.show()
 
     plt.plot(output.history["loss"])
     plt.xlabel('Epochs')
     plt.ylabel('Loss')
     plt.title(f"Train loss {args.dimension}d-Dropout")
-    plt.savefig(f"assets/loss-{args.dimension}-Dropout.png")
+    plt.savefig(f"assents/loss-{args.dimension}-Dropout.png")
     plt.show()
 
 
     result = text_classifier.test(X_test_avg, Y_test_one_hot)
-    print(f"test loss : ", result[0], "test accuracy : ", result[1])
+    print("test loss : ", result[0], "test accuracy : ", result[1])
 
     # Inference
     start = time.time()
     for i in range(100):
         result = text_classifier.inference(args.sentence)
-    inference_time = time.time() - start()
-    inference_avg_time = (time.time() - start) / 100
-    print(f"result : ", result , "Inference average time : ", inference_avg_time)
+    inference_time = time.time() - start
+    inference_avg_time = inference_time / 100
+    print("result:", result, "Inference average time:", inference_avg_time)
